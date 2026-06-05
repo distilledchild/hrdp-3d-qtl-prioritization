@@ -1,0 +1,23 @@
+Experiment description: Juicer version 1.6; BWA 0.7.17-r1188; 30 threads; Picked up _JAVA_OPTIONS: -Xmx64g; /lustre/isaac24/proj/UTHSC0013/panjun_work/projects/hic/2023A/hic-analysis/juicer/A2DB/scripts/juicer.sh -S chimeric -g rn7 -d /lustre/isaac24/proj/UTHSC0013/panjun_work/projects/hic/2023A/hic-analysis/juicer/A2DB -s Arima -b GATCGATC|GATCAATC|GATCACTC|GATCAGTC|GATCATTC|GATCTAAG|GATCTCAG|GATCTGAG|GATCTTAG|GATCTAA|GAATGATC|GAATAATC|GAATACTC|GAATAGTC|GAATATTC|GAATTAAG|GAATTCAG|GAATTGAG|GAATTTAG|GAATTAA|GACTGATC|GACTAATC|GACTACTC|GACTAGTC|GACTATTC|GACTTAAG|GACTTCAG|GACTTGAG|GACTTTAG|GACTTAA|GAGTGATC|GAGTAATC|GAGTACTC|GAGTAGTC|GAGTATTC|GAGTTAAG|GAGTTCAG|GAGTTGAG|GAGTTTAG|GAGTTAA|GATTGATC|GATTAATC|GATTACTC|GATTAGTC|GATTATTC|GATTTAAG|GATTTCAG|GATTTGAG|GATTTTAG|GATTTAA|CTAAGATC|CTAAAATC|CTAAACTC|CTAAAGTC|CTAAATTC|CTAATAAG|CTAATCAG|CTAATGAG|CTAATTAG|CTAATAA|CTCAGATC|CTCAAATC|CTCAACTC|CTCAAGTC|CTCAATTC|CTCATAAG|CTCATCAG|CTCATGAG|CTCATTAG|CTCATAA|CTGAGATC|CTGAAATC|CTGAACTC|CTGAAGTC|CTGAATTC|CTGATAAG|CTGATCAG|CTGATGAG|CTGATTAG|CTGATAA|CTTAGATC|CTTAAATC|CTTAACTC|CTTAAGTC|CTTAATTC|CTTATAAG|CTTATCAG|CTTATGAG|CTTATTAG|CTTATAA|TTAGATC|TTAAATC|TTAACTC|TTAAGTC|TTAATTC|TTATAAG|TTATCAG|TTATGAG|TTATTAG|TTATAA -p /lustre/isaac24/proj/UTHSC0013/panjun_work/refs/rn7_ucsc/bwa_rn7chr/chrom.sizes -y /lustre/isaac24/proj/UTHSC0013/panjun_work/projects/hic/2023A/hic-analysis/juicer/A2DB/restriction_sites/rn7chr_juicer_arima4.txt -z /lustre/isaac24/proj/UTHSC0013/panjun_work/refs/rn7_ucsc/bwa_rn7chr/rn7chr.fa -D /lustre/isaac24/proj/UTHSC0013/panjun_work/projects/hic/2023A/hic-analysis/juicer/A2DB -t 30
+Sequenced Read Pairs:  241,132,264
+ Normal Paired: 88,512,979 (36.71%)
+ Chimeric Paired: 115,869,905 (48.05%)
+ Chimeric Ambiguous: 32,117,729 (13.32%)
+ Unmapped: 4,631,651 (1.92%)
+ Ligation Motif Present: 215,734,752 (89.47%)
+Alignable (Normal+Chimeric Paired): 204,382,884 (84.76%)
+WARN [2026-05-03T19:56:21,378]  [Globals.java:138] [main]  Development mode is enabled
+Unique Reads: 185,148,532 (76.78%)
+PCR Duplicates: 18,175,229 (7.54%)
+Optical Duplicates: 1,059,123 (0.44%)
+Library Complexity Estimate: 1,068,441,795
+Intra-fragment Reads: 278,929 (0.12% / 0.15%)
+Below MAPQ Threshold: 38,930,576 (16.14% / 21.03%)
+Hi-C Contacts: 145,939,027 (60.52% / 78.82%)
+ Ligation Motif Present: 129,287,049  (53.62% / 69.83%)
+ 3' Bias (Long Range): 52% - 48%
+ Pair Type %(L-I-O-R): 25% - 25% - 25% - 25%
+Inter-chromosomal: 30,787,090  (12.77% / 16.63%)
+Intra-chromosomal: 115,151,937  (47.75% / 62.19%)
+Short Range (<20Kb): 48,120,961  (19.96% / 25.99%)
+Long Range (>20Kb): 67,030,008  (27.80% / 36.20%)
