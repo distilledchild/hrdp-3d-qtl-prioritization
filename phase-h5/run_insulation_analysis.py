@@ -6,13 +6,14 @@ import datetime
 # =======================================================================
 # Configuration - Local Mac Environment
 # =======================================================================
-# Automatically recognize the folder where the script is located as the working directory
-WORK_DIR = os.path.dirname(os.path.abspath(__file__))
+# Dropbox output directory
+DROPBOX_H5_DIR = "/Users/pete/Library/CloudStorage/Dropbox-UTHSCGGI/K P/Gateway_to_Hao/hic2/phase-h5"
+os.makedirs(DROPBOX_H5_DIR, exist_ok=True)
 
-# Set H3 matrix path (phase-h3 located in the parent directory of phase-h5 folder)
-H3_MCOOL_DIR = os.path.join(os.path.dirname(WORK_DIR), "phase-h3")
+# Set H3 matrix path (Dropbox location where phase-h3 outputs are saved)
+H3_MCOOL_DIR = "/Users/pete/Library/CloudStorage/Dropbox-UTHSCGGI/K P/Gateway_to_Hao/hic2/phase-h3"
 
-SAMPLES = ["607", "DA21A", "DBA9A", "DA68A", "DE8BA", "D765A", "592BB", "DA08A", "A2DB", "74AA"]
+SAMPLES = ["607", "DA21A", "DBA9A", "DA68A", "D765A", "592BB", "DA08A", "A2DB", "74AA", "DE8BA"]
 
 # Window sizes for 100kb resolution (typically 3x, 5x, 10x of resolution)
 RES_100K     = 100000
@@ -25,7 +26,7 @@ WINDOWS_250K = ["750000", "1250000", "2500000"]
 NUM_THREADS = 4
 
 # Log file setup (generated including time)
-LOG_FILE = os.path.join(WORK_DIR, f"phase_h5_insulation_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
+LOG_FILE = os.path.join(DROPBOX_H5_DIR, f"phase_h5_insulation_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.log")
 # =======================================================================
 
 def print_log(msg):
@@ -51,15 +52,14 @@ def run_cmd(cmd):
         sys.exit(1)
 
 def main():
-    # Move to working directory (script location)
-    os.makedirs(WORK_DIR, exist_ok=True)
-    os.chdir(WORK_DIR)
+    # Move to Dropbox output directory
+    os.chdir(DROPBOX_H5_DIR)
     
     # Initialize log file
     with open(LOG_FILE, "w") as f:
         f.write(f"=== Phase H5 Insulation Analysis Log ({datetime.datetime.now()}) ===\n")
         
-    print_log(f"📂 Working Directory: {WORK_DIR}")
+    print_log(f"📂 Output Directory (Dropbox): {DROPBOX_H5_DIR}")
     print_log(f"📝 Log File: {LOG_FILE}")
 
     # TAD/Insulation calculation loop for each sample
@@ -77,7 +77,7 @@ def main():
         # [Step A] 100kb resolution analysis
         if not os.path.exists(out_100k):
             print_log(f"[{sample}] Step A: 100kb resolution analysis in progress... (Windows: {', '.join(WINDOWS_100K)})")
-            cmd_100k = f"uv run cooltools insulation \"{mcool_path}::/resolutions/{RES_100K}\" {' '.join(WINDOWS_100K)} -p {NUM_THREADS} -o \"{out_100k}\""
+            cmd_100k = f"uv run --python 3.10 --with cooltools==0.7.1 --with \"pandas<2.2.0\" --with \"numpy<2.0.0\" cooltools insulation \"{mcool_path}::/resolutions/{RES_100K}\" {' '.join(WINDOWS_100K)} -p {NUM_THREADS} -o \"{out_100k}\""
             run_cmd(cmd_100k)
         else:
             print_log(f"[{sample}] Step A: 100kb resolution analysis is already completed.")
@@ -85,7 +85,7 @@ def main():
         # [Step B] 250kb resolution analysis
         if not os.path.exists(out_250k):
             print_log(f"[{sample}] Step B: 250kb resolution analysis in progress... (Windows: {', '.join(WINDOWS_250K)})")
-            cmd_250k = f"uv run cooltools insulation \"{mcool_path}::/resolutions/{RES_250K}\" {' '.join(WINDOWS_250K)} -p {NUM_THREADS} -o \"{out_250k}\""
+            cmd_250k = f"uv run --python 3.10 --with cooltools==0.7.1 --with \"pandas<2.2.0\" --with \"numpy<2.0.0\" cooltools insulation \"{mcool_path}::/resolutions/{RES_250K}\" {' '.join(WINDOWS_250K)} -p {NUM_THREADS} -o \"{out_250k}\""
             run_cmd(cmd_250k)
         else:
             print_log(f"[{sample}] Step B: 250kb resolution analysis is already completed.")

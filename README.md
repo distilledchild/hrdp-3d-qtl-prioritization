@@ -18,10 +18,9 @@ The analysis is structured into multiple robust phases, managed via `cooltools` 
 ## Repository Structure
 - `HICCUPS/`: HiCCUPS loop calling outputs (`merged_loops.bedpe`) for each of the 10 HRDP strains.
 - `QC_with_sb_options/`: Juicer quality control and pipeline metrics (e.g., `inter_30.txt`).
-- `scripts/`: Python orchestration scripts for matrix generation, compartment analysis, and insulation analysis. 
-  - `run_matrix_gen.py`: Automates `.mcool` generation.
-  - `run_compartment_analysis.py`: Automates A/B compartment calculations.
-  - `run_insulation_analysis.py`: Automates TAD boundary calling.
+- `phase-h3/`: Contains `run_matrix_gen.py` for `.mcool` generation.
+- `phase-h4/`: Contains `run_compartment_analysis.py` for A/B compartment calculations.
+- `phase-h5/`: Contains `run_insulation_analysis.py` for TAD boundary calling.
 
 ## Key Considerations
 - Replicates are not available; thus, all comparative and differential architecture claims are conservatively framed using "candidate" language.
